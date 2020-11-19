@@ -22,6 +22,7 @@
 
 <script>
 import jsCookie from 'js-cookie'
+
 export default {
   name: 'login',
   data() {
