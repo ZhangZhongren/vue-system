@@ -1,0 +1,18 @@
+$size: 9, 10, 12 ,14, 16, 18, 20, 22,16;
+@each $i in $size {
+  .fs-#{$i} {
+    font-size: #{$i}px;
+  }
+}
+$size: 500, 600, 700,800,900,1000;
+@each $i in $size {
+  .fb-#{$i} {
+    font-weight: #{$i};
+  }
+}
+$size: 1,2,3,4;
+@each $i in $size {
+  .lh-#{$i} {
+     line-height: #{$i};
+  }
+}

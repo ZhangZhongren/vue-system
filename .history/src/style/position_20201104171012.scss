@@ -1,0 +1,48 @@
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+$size: 0, 5, 10, 15 ,20, 40, 50, 100;
+$position: 'top', 'left' ,'bottom', 'right';
+
+@each $i in $size {
+  .m-#{$i} {
+    margin: #{$i}px;
+  }
+  .margin-#{$i} {
+    margin: #{$i}px;
+  }
+  .p-#{$i} {
+    padding: #{$i}px;
+  }
+  .padding-#{$i} {
+    padding: #{$i}px;
+  }
+  @each $p in $position{
+    .margin-#{$p}-#{$i} {
+      margin-#{$p}: #{$i}px;
+    }
+    .m#{str-slice($p,0,1)}-#{$i} {
+      margin-#{$p}: #{$i}px;
+    }
+    .padding-#{$p}-#{$i} {
+      padding-#{$p}: #{$i}px;
+    }
+    .p#{str-slice($p,0,1)}-#{$i} {
+      padding-#{$p}: #{$i}px;
+    }
+  }
+}
+$width-size: 50, 100, 150, 200 ,250, 300;
+@each $i in $width-size {
+  .width-#{$i}px{
+    width: #{$i}px !important;
+  }
+  .max-width-#{$i}px{
+    max-width: #{$i}px !important;
+  }
+}
