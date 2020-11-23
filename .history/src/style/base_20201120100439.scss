@@ -1,0 +1,39 @@
+@import './position';
+@import './element-ui.scss';
+@import './font.scss';
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.clearfix {
+  &:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+.tox-statusbar {
+  display: none !important;
+}
