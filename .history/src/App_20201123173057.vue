@@ -5,9 +5,11 @@
 </template>
 
 <script>
+import mixin from './mixin'
 import { changeTheme } from '@/utils/index.js'
 export default {
   name: 'app',
+  mixins: [mixin],
   created() {
     // console.log(this.$store.state)
   },

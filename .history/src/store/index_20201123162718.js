@@ -1,8 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
-import SecureLS from 'secure-ls'
-const ls = new SecureLS({ isCompression: false })
+import * as Cookies from 'js-cookie'
 Vue.use(Vuex)
 
 // https://webpack.js.org/guides/dependency-management/#requirecontext
@@ -21,13 +20,13 @@ const store = new Vuex.Store({
   },
   plugins: [
     createPersistedState({
-      paths: ['setting'], // 需要缓存的文件
       storage: {
-        getItem: (key) => ls.get(key),
-        setItem: (key, value) => ls.set(key, value),
-        removeItem: (key) => ls.remove(key)
-      }
-    })
+        getItem: (key) => Cookies.get(key),
+        setItem: (key, value) =>
+          Cookies.set(key, value, { expires: 3, secure: true }),
+        removeItem: (key) => Cookies.remove(key),
+      },
+    }),
   ]
 })
 

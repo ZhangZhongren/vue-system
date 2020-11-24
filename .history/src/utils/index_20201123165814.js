@@ -1,3 +1,4 @@
+import { Message } from 'element-ui'
 /**
  * Check if an element has a class
  * @param {HTMLElement} elm
@@ -48,15 +49,22 @@ const ORIGINAL_THEME = '#409EFF'
 const version = require('element-ui/package.json').version // element-ui version from node_modules
 
 export const changeTheme = async(val, chalk) => {
-  const oldVal = chalk ? val : ORIGINAL_THEME
+  const oldVal = chalk ? this.theme : ORIGINAL_THEME
   if (typeof val !== 'string') return
   const themeCluster = getThemeCluster(val.replace('#', ''))
   const originalCluster = getThemeCluster(oldVal.replace('#', ''))
+  const $message = Message({
+    message: '  Compiling the theme',
+    customClass: 'theme-message',
+    type: 'success',
+    duration: 0,
+    iconClass: 'el-icon-loading'
+  })
 
   const getHandler = (variable, id) => {
     return () => {
       const originalCluster = getThemeCluster(ORIGINAL_THEME.replace('#', ''))
-      const newStyle = updateStyle(chalk, originalCluster, themeCluster)
+      const newStyle = updateStyle(this[variable], originalCluster, themeCluster)
 
       let styleTag = document.getElementById(id)
       if (!styleTag) {
@@ -89,6 +97,7 @@ export const changeTheme = async(val, chalk) => {
     if (typeof innerText !== 'string') return
     style.innerText = updateStyle(innerText, originalCluster, themeCluster)
   })
+  $message.close()
 }
 
 const getThemeCluster = (theme) => {

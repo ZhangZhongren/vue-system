@@ -18,7 +18,7 @@ const actions = {
     commit('CHANGE_SETTING', data)
   },
 }
-// changeTheme(variables.theme)
+
 export default {
   namespaced: true,
   state,

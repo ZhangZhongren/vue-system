@@ -9,7 +9,7 @@ import { changeTheme } from '@/utils/index.js'
 export default {
   name: 'app',
   created() {
-    // console.log(this.$store.state)
+    console.log(this.$store.state)
   },
   mounted() {
     changeTheme(this.$store.state.setting.theme)

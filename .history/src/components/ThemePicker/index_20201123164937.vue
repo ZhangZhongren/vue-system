@@ -8,6 +8,8 @@
 </template>
 
 <script>
+const version = require('element-ui/package.json').version // element-ui version from node_modules
+const ORIGINAL_THEME = '#409EFF' // default color
 import { changeTheme } from '@/utils/index.js'
 export default {
   data() {
@@ -29,8 +31,7 @@ export default {
       immediate: true
     },
     async theme(val) {
-      changeTheme(val, this.chalk)
-      this.$emit('change', val)
+      changeTheme(val)
     }
   },
 

@@ -1,3 +1,4 @@
+import { Message } from 'element-ui'
 /**
  * Check if an element has a class
  * @param {HTMLElement} elm
@@ -52,6 +53,13 @@ export const changeTheme = async(val, chalk) => {
   if (typeof val !== 'string') return
   const themeCluster = getThemeCluster(val.replace('#', ''))
   const originalCluster = getThemeCluster(oldVal.replace('#', ''))
+  const $message = Message({
+    message: '  Compiling the theme',
+    customClass: 'theme-message',
+    type: 'success',
+    duration: 0,
+    iconClass: 'el-icon-loading'
+  })
 
   const getHandler = (variable, id) => {
     return () => {
@@ -89,6 +97,7 @@ export const changeTheme = async(val, chalk) => {
     if (typeof innerText !== 'string') return
     style.innerText = updateStyle(innerText, originalCluster, themeCluster)
   })
+  $message.close()
 }
 
 const getThemeCluster = (theme) => {

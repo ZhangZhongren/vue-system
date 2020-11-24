@@ -27,7 +27,7 @@ const store = new Vuex.Store({
         setItem: (key, value) => ls.set(key, value),
         removeItem: (key) => ls.remove(key)
       }
-    })
+    }),
   ]
 })
 

@@ -29,8 +29,7 @@ export default {
       immediate: true
     },
     async theme(val) {
-      changeTheme(val, this.chalk)
-      this.$emit('change', val)
+      changeTheme(val)
     }
   },
 

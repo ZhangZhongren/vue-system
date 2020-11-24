@@ -21,13 +21,17 @@ const store = new Vuex.Store({
   },
   plugins: [
     createPersistedState({
-      paths: ['setting'], // 需要缓存的文件
       storage: {
         getItem: (key) => ls.get(key),
         setItem: (key, value) => ls.set(key, value),
         removeItem: (key) => ls.remove(key)
+      },
+      reducer(val) {
+        return {
+          setting: modules.setting
+        }
       }
-    })
+    }),
   ]
 })
 

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import createPersistedState from 'vuex-persistedstate'
 import SecureLS from 'secure-ls'
 const ls = new SecureLS({ isCompression: false })
+
 Vue.use(Vuex)
 
 // https://webpack.js.org/guides/dependency-management/#requirecontext
@@ -21,13 +22,12 @@ const store = new Vuex.Store({
   },
   plugins: [
     createPersistedState({
-      paths: ['setting'], // 需要缓存的文件
       storage: {
         getItem: (key) => ls.get(key),
         setItem: (key, value) => ls.set(key, value),
-        removeItem: (key) => ls.remove(key)
-      }
-    })
+        removeItem: (key) => ls.remove(key),
+      },
+    }),
   ]
 })
 

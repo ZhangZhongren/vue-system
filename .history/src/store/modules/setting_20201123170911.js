@@ -1,4 +1,5 @@
 import variables from '@/style/element-variables.scss'
+import { changeTheme } from '@/utils/index.js'
 
 const state = {
   theme: variables.theme
@@ -18,7 +19,7 @@ const actions = {
     commit('CHANGE_SETTING', data)
   },
 }
-// changeTheme(variables.theme)
+changeTheme(variables.theme)
 export default {
   namespaced: true,
   state,

@@ -1,3 +1,4 @@
+
 /**
  * Check if an element has a class
  * @param {HTMLElement} elm
@@ -47,16 +48,25 @@ export const debounce = (fn, wait) => {
 const ORIGINAL_THEME = '#409EFF'
 const version = require('element-ui/package.json').version // element-ui version from node_modules
 
-export const changeTheme = async(val, chalk) => {
-  const oldVal = chalk ? val : ORIGINAL_THEME
+export const changeTheme = async(val) => {
+  const oldVal = this.chalk ? this.theme : ORIGINAL_THEME
   if (typeof val !== 'string') return
   const themeCluster = getThemeCluster(val.replace('#', ''))
   const originalCluster = getThemeCluster(oldVal.replace('#', ''))
+  // console.log(themeCluster, originalCluster)
+
+  const $message = this.$message({
+    message: '  Compiling the theme',
+    customClass: 'theme-message',
+    type: 'success',
+    duration: 0,
+    iconClass: 'el-icon-loading'
+  })
 
   const getHandler = (variable, id) => {
     return () => {
       const originalCluster = getThemeCluster(ORIGINAL_THEME.replace('#', ''))
-      const newStyle = updateStyle(chalk, originalCluster, themeCluster)
+      const newStyle = updateStyle(this[variable], originalCluster, themeCluster)
 
       let styleTag = document.getElementById(id)
       if (!styleTag) {
@@ -68,11 +78,9 @@ export const changeTheme = async(val, chalk) => {
     }
   }
 
-  if (!chalk) {
+  if (!this.chalk) {
     const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`
-    await getCSSString(url, (res) => {
-      chalk = res
-    })
+    await this.getCSSString(url, 'chalk')
   }
 
   const chalkHandler = getHandler('chalk', 'chalk-style')
@@ -89,6 +97,8 @@ export const changeTheme = async(val, chalk) => {
     if (typeof innerText !== 'string') return
     style.innerText = updateStyle(innerText, originalCluster, themeCluster)
   })
+  this.$emit('change', val)
+  $message.close()
 }
 
 const getThemeCluster = (theme) => {
@@ -144,16 +154,16 @@ const updateStyle = (style, oldCluster, newCluster) => {
   return newStyle
 }
 
-const getCSSString = (url, call) => {
+const getCSSString = (url, variable) => {
   return new Promise(resolve => {
     const xhr = new XMLHttpRequest()
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        call && call(xhr.responseText.replace(/@font-face{[^}]+}/, ''))
+        this[variable] = xhr.responseText.replace(/@font-face{[^}]+}/, '')
         resolve()
       }
     }
     xhr.open('GET', url)
     xhr.send()
   })
-}
+},
