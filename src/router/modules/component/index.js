@@ -28,6 +28,11 @@ export default [
         path: 'rich-editer',
         component: _import('rich-eciter/index'),
         name: '富文本'
+      },
+      {
+        path: 'd3-process',
+        component: _import('d3-process/index'),
+        name: 'd3-流程'
       }
     ]
   }
