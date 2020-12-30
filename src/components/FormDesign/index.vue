@@ -10,11 +10,11 @@
         </el-button-group>
       </el-header>
       <el-main>
-        <form-container :form-data="formData" :select="select" />
+        <form-container :form-data="formData" :select.sync="select" />
       </el-main>
     </el-container>
     <el-aside width="250px">
-      <attr-config :form-data="formData" />
+      <attr-config :form-data="formData" :select="select" />
     </el-aside>
   </el-container>
 

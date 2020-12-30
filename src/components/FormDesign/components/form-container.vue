@@ -10,27 +10,30 @@
         <transition-group name="fade" tag="div" class="form-list p-20">
           <template v-for="(element, index) in formData.list">
             <template v-if="element.type == 'grid2' || element.type == 'grid4'">
-              <el-row
+              <item-container
                 v-if="element && element.key"
                 :key="element.key"
-                class="widget-col widget-view"
-                type="flex"
-                :class="{active: currentSelect.key === element.key}"
-                :gutter="element.options.gutter ? element.options.gutter : 0"
-                :justify="element.options.justify"
-                :align="element.options.align"
+                :active="currentSelect.key === element.key"
+                @handleDelete="_handleDelete(index)"
                 @click.native.stop="_handlecurrentSelect(index)"
               >
-                <el-col v-for="(col, colIndex) in element.columns" :key="colIndex" :span="col.span ? col.span : 0">
+                <el-row
+                  class="widget-col widget-view p-10"
+                  type="flex"
+                  :gutter="element.options.gutter ? element.options.gutter : 0"
+                  :justify="element.options.justify"
+                  :align="element.options.align"
+                >
+                  <el-col v-for="(col, colIndex) in element.columns" :key="colIndex" :span="col.span ? col.span : 0">
 
-                  <draggable
-                    v-model="col.list"
-                    :no-transition-on-drag="true"
-                    v-bind="{group:'people', ghostClass: 'ghost',animation: 200, handle: '.drag-widget'}"
-                    @end="_handleMoveEnd"
-                    @add="handleWidgetColAdd($event, element, colIndex)"
-                  >
-                    <transition-group name="fade" tag="div" class="col-list">
+                    <draggable
+                      v-model="col.list"
+                      :no-transition-on-drag="true"
+                      v-bind="{group:'people', ghostClass: 'ghost',animation: 200, handle: '.drag-widget'}"
+                      @end="_handleMoveEnd"
+                      @add="handleWidgetColAdd($event, element, colIndex)"
+                    >
+                      <transition-group name="fade" tag="div" class="col-list">
                       <!-- <widget-form-item
                         v-for="(el, i) in col.list"
                         v-if="el.key"
@@ -40,34 +43,32 @@
                         :index="i"
                         :data="col"
                       /> -->
-                    </transition-group>
+                      </transition-group>
 
-                  </draggable>
-                </el-col>
-                <el-button-group v-if="currentSelect.key == element.key" class="ctrls">
-                  <el-button type="text" icon="el-icon-delete" @click.stop="_handleWidgetDelete(index)" />
-                </el-button-group>
-                <el-button-group v-if="currentSelect.key == element.key" class="drag">
-                  <el-button type="text">
-                    <i class="iconfont icon-drag drag-widget" />
-                  </el-button>
-                </el-button-group>
-              </el-row>
+                    </draggable>
+                  </el-col>
+                </el-row>
+              </item-container>
+
             </template>
             <template v-else>
-              <form-item
+              <item-container
                 v-if="element && element.key"
                 :key="element.key"
-                :element="element"
+                :active="currentSelect.key === element.key"
+                @handleDelete="_handleDelete(index)"
                 @click.native.stop="_handlecurrentSelect(index)"
-              />
+              >
+                <form-item
+                  :element="element"
+                  @click.native.stop="_handlecurrentSelect(index)"
+                />
+              </item-container>
             </template>
           </template>
         </transition-group>
       </draggable>
-
     </el-form>
-
   </div>
 </template>
 
@@ -75,11 +76,13 @@
 import '../style/index.scss'
 import Draggable from 'vuedraggable'
 import FormItem from './design-form-item'
+import ItemContainer from './itemContainer'
 export default {
   name: 'design-form-container',
   components: {
     Draggable,
-    FormItem
+    FormItem,
+    ItemContainer
   },
   props: {
     formData: {
@@ -134,7 +137,7 @@ export default {
     handleWidgetColAdd(e) {
       // console.log(e)
     },
-    _handleWidgetDelete(index) {
+    _handleDelete(index) {
       this.formData.list.splice(index, 1)
     }
   }

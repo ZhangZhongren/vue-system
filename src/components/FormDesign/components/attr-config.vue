@@ -2,7 +2,7 @@
   <div class="attr-config">
     <el-tabs v-model="activeName">
       <el-tab-pane label="控件属性" name="first">
-        <section />
+        <component :is="formatConfigName(select.type)" :config-data="formData.list.find(item => item.key === select.key)" />
       </el-tab-pane>
       <el-tab-pane label="表单属性" name="second">
         <from-config class="pl-10" :model="formData.config" />
@@ -13,13 +13,19 @@
 
 <script>
 import FromConfig from './attrConfigComponents/form-config'
+import ConfigComponents from './attrConfigComponents/index'
 export default {
   name: 'attr-config',
   components: {
     FromConfig
   },
+  mixins: [ConfigComponents],
   props: {
     formData: {
+      type: Object,
+      default: () => ({})
+    },
+    select: {
       type: Object,
       default: () => ({})
     }

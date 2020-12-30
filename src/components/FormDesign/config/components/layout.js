@@ -1,14 +1,20 @@
+const COL_CONFIG = (span) => ({
+  span: span,
+  offset: 0,
+  push: 0,
+  pull: 0
+})
 export default [
   {
     type: 'grid2',
     icon: 'icon-grid-',
     columns: [
       {
-        span: 12,
+        ...COL_CONFIG(12),
         list: []
       },
       {
-        span: 12,
+        ...COL_CONFIG(12),
         list: []
       }
     ],
@@ -23,19 +29,19 @@ export default [
     icon: 'icon-grid-',
     columns: [
       {
-        span: 6,
+        ...COL_CONFIG(6),
         list: []
       },
       {
-        span: 6,
+        ...COL_CONFIG(6),
         list: []
       },
       {
-        span: 6,
+        ...COL_CONFIG(6),
         list: []
       },
       {
-        span: 6,
+        ...COL_CONFIG(6),
         list: []
       }
     ],

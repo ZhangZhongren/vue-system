@@ -50,38 +50,54 @@ $primary-background-color: #ecf5ff;
     background: #fff;
     border: 1px dashed #999;
     min-height: 600px;
-    margin: 10px;
     .widget-view{
       position: relative;
-      background-color: rgba(236, 245, 255, .3);
-      margin: 4px;
-      .ctrls {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        background-color: $primary-background-color;
-        padding: 0 5px;
-        font-size: 12px;
-      }
-      .drag {
-        position: absolute;
-        left: 0;
-        top: 0;
-        background-color: $primary-background-color;
-        padding: 0 5px;
-        i {
-          font-size: 12px;
-        }
-      }
+      background-color: #f1f1f1;
     }
     .col-list {
-      min-height: 40px;
+      min-height: 30px;
       border: 1px dashed #ccc;
       background: #fff;
     }
     .active {
       outline: 2px solid $primary-color;
-      border: 1px solid $primary-color;
+      box-sizing: border-box;
     }
   }
+}
+
+.item-container {
+  position: relative;
+  margin-bottom: 10px;
+  .ctrls {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    background-color: $primary-background-color;
+    padding: 0 5px;
+    font-size: 12px;
+  }
+  .drag {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: $primary-background-color;
+    padding: 0 5px;
+    i {
+      font-size: 12px;
+    }
+  }
+}
+
+.ghost{
+  background: $primary-color;
+  border: 1px solid $primary-color;
+  outline: none !important;
+  height: 0px;
+  box-sizing: border-box;
+  font-size: 0;
+  content: '';
+  overflow: hidden;
+  padding: 0;
+  width: 100%;
 }
