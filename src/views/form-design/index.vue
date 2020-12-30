@@ -1,17 +1,22 @@
 <template>
-  <div class="">
+  <el-container>
     <el-header>
       <Header />
     </el-header>
-    <router-link to="/directive">start</router-link>
-  </div>
+    <el-container style="height:calc(100vh - 60px)">
+      <form-design />
+    </el-container>
+  </el-container>
 </template>
 
 <script>
+import FormDesign from '@/components/FormDesign/index'
 import Header from '@/views/layout/header/index'
+
 export default {
-  name: 'home',
+  name: 'form-design-content',
   components: {
+    FormDesign,
     Header
   },
   props: {},

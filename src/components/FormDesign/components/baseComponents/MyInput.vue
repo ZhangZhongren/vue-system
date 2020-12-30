@@ -1,22 +1,15 @@
 <template>
-  <div class="">
-    <el-header>
-      <Header />
-    </el-header>
-    <router-link to="/directive">start</router-link>
-  </div>
+  <el-input v-model="name" />
 </template>
 
 <script>
-import Header from '@/views/layout/header/index'
 export default {
-  name: 'home',
-  components: {
-    Header
-  },
+  name: 'design-input',
+  components: {},
   props: {},
   data() {
     return {
+      name: ''
     }
   },
   computed: {

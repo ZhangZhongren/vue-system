@@ -1,8 +1,9 @@
 <template>
   <el-container>
     <el-header>
-      zzr
+      <Header />
     </el-header>
+
     <el-container>
       <right-panel>
         <el-row class="mt-50">
@@ -37,6 +38,7 @@
 </template>
 
 <script>
+import Header from '@/views/layout/header/index'
 import Aside from './menu/index'
 import RightPanel from '@/components/RightPanel/index'
 import ThemePicker from '@/components/ThemePicker/index'
@@ -47,7 +49,8 @@ export default {
   components: {
     Aside,
     RightPanel,
-    ThemePicker
+    ThemePicker,
+    Header
   },
   props: {},
   data() {

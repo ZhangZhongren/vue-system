@@ -1,11 +1,16 @@
 <template>
-  <!-- <router-view /> -->
-  <div />
+  <div>
+    <el-button-group class="fr mt-15">
+      <el-button type="text">
+        <router-link to="/form-design">自定义表单</router-link>
+      </el-button>
+    </el-button-group>
+  </div>
 </template>
 
 <script>
 export default {
-  name: '',
+  name: 'my-header',
   components: {},
   props: {},
   data() {

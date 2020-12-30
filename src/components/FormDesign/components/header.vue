@@ -1,19 +1,11 @@
 <template>
-  <div class="">
-    <el-header>
-      <Header />
-    </el-header>
-    <router-link to="/directive">start</router-link>
-  </div>
+  <div class="">header</div>
 </template>
 
 <script>
-import Header from '@/views/layout/header/index'
 export default {
-  name: 'home',
-  components: {
-    Header
-  },
+  name: 'form-design-header',
+  components: {},
   props: {},
   data() {
     return {

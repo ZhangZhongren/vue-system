@@ -35,5 +35,14 @@ export default [
         name: 'd3-流程'
       }
     ]
+  },
+  {
+    path: '/form-design',
+    component: _import('form-design/index'),
+    name: 'form-design',
+    meta: {
+      title: '自定义表单',
+      isNotMenu: true
+    },
   }
 ]

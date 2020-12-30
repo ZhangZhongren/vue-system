@@ -1,0 +1,52 @@
+<template>
+  <div class="attr-config">
+    <el-tabs v-model="activeName">
+      <el-tab-pane label="控件属性" name="first">
+        <section />
+      </el-tab-pane>
+      <el-tab-pane label="表单属性" name="second">
+        <from-config class="pl-10" :model="formData.config" />
+      </el-tab-pane>
+    </el-tabs>
+  </div>
+</template>
+
+<script>
+import FromConfig from './attrConfigComponents/form-config'
+export default {
+  name: 'attr-config',
+  components: {
+    FromConfig
+  },
+  props: {
+    formData: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  data() {
+    return {
+      activeName: 'first'
+    }
+  },
+  computed: {
+  },
+  watch: {
+  },
+  created() {
+  },
+  mounted() {
+  },
+  methods: {
+  }
+}
+</script>
+<style lang="scss" scoped>
+  .attr-config {
+    height: 100%;
+    border-left: 1px solid #f1f1f1;
+    /deep/ .el-tabs__nav-scroll{
+      padding-left: 10px;
+    }
+  }
+</style>
