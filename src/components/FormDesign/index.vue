@@ -13,7 +13,7 @@
         <form-container :form-data="formData" :select.sync="select" />
       </el-main>
     </el-container>
-    <el-aside width="250px">
+    <el-aside width="300px">
       <attr-config :form-data="formData" :select="select" />
     </el-aside>
   </el-container>

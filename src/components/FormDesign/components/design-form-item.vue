@@ -1,6 +1,6 @@
 <template>
   <el-form-item :label="$t(`fm.components.fields.${element.type}`)">
-    <component :is="formatComponentsName(element.type)" />
+    <component :is="formatComponentsName(element.type)" :config="element.options" />
   </el-form-item>
 </template>
 

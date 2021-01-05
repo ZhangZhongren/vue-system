@@ -1,12 +1,17 @@
 <template>
-  <el-input v-model="name" />
+  <el-input v-model="config.defaultValue" v-bind="config" />
 </template>
 
 <script>
 export default {
   name: 'design-input',
   components: {},
-  props: {},
+  props: {
+    config: {
+      type: Object,
+      default: () => ({})
+    }
+  },
   data() {
     return {
       name: ''

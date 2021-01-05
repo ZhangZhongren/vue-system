@@ -3,20 +3,30 @@ export default [
     type: 'input',
     icon: 'icon-input',
     options: {
-      width: '100%',
       defaultValue: '',
-      required: false,
+      type: 'input',
+      autocomplete: 'off',
       dataType: 'string',
+      name: '',
+      'prefix-icon': '',
+      'suffix-icon': '',
       pattern: '',
       placeholder: '',
+      maxlength: Infinity,
+      minlength: 0,
+      clearable: true,
+      readonly: false,
+      autofocus: false,
+      required: false,
       disabled: false,
+      'validate-event': true,
+      'show-password': false
     }
   },
   {
     type: 'textarea',
     icon: 'icon-diy-com-textarea',
     options: {
-      width: '100%',
       defaultValue: '',
       required: false,
       disabled: false,
@@ -67,7 +77,6 @@ export default [
         value: 'value',
         label: 'label'
       },
-      remoteFunc: '',
       disabled: false,
     }
   },
@@ -97,7 +106,6 @@ export default [
         value: 'value',
         label: 'label'
       },
-      remoteFunc: '',
       disabled: false,
     }
   },
@@ -189,7 +197,6 @@ export default [
         value: 'value',
         label: 'label'
       },
-      remoteFunc: ''
     }
   },
   {
