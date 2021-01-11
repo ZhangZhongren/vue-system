@@ -43,6 +43,19 @@ module.exports = {
         symbolId: 'icon-[name]'
       })
       .end()
+    config.module
+      .rule('md')
+      .test(/\.md$/)
+      .use('vue-loader')
+      .loader('vue-loader')
+      .options({
+        compilerOptions: {
+          preserveWhitespace: false
+        }
+      })
+      .end()
+      .use('./md-loader/index.js')
+      .loader(path.resolve(__dirname, './md-loader/index.js'))
   },
   devServer: {
     hot: true,

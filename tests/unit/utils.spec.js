@@ -12,28 +12,28 @@ describe('utils.js', () => {
   })
 
   test('compose(add, multiple, minus)(10) equals ', () => {
-    let add = n => n + 3;
-    let multiple = n => n * 2;
-    let minus = n => n - 1;
+    const add = n => n + 3
+    const multiple = n => n * 2
+    const minus = n => n - 1
     expect(
       compose(
         add,
         multiple,
         minus
       )(10)
-    ).toBe(21);
+    ).toBe(21)
   })
 
   test('pipe(add, multiple, minus)(10) equals ', () => {
-    let add = n => n + 3;
-    let multiple = n => n * 2;
-    let minus = n => n - 1;
+    const add = n => n + 3
+    const multiple = n => n * 2
+    const minus = n => n - 1
     expect(
       pipe(
         add,
         multiple,
         minus
       )(10)
-    ).toBe(25);
+    ).toBe(25)
   })
 })

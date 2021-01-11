@@ -1,5 +1,5 @@
 import html2canvas from 'html2canvas'
-import { jsPDF } from "jspdf";
+import { jsPDF } from 'jspdf'
 export default {
   bind: (el, binding) => {
     console.log(document.getElementById(binding.value))
@@ -24,12 +24,12 @@ export default {
 }
 
 async function savePdf(html) {
-  let contentWidth = html.clientWidth // 获得该容器的宽
-  let contentHeight = html.clientHeight // 获得该容器的高
+  const contentWidth = html.clientWidth // 获得该容器的宽
+  const contentHeight = html.clientHeight // 获得该容器的高
   html2canvas(html).then(canvas => {
-    const doc = new jsPDF();
+    const doc = new jsPDF()
     console.log(doc)
-    doc.addImage(canvas.toDataURL('image/jpeg', 1), 'JPEG', 0, 0,  contentWidth / 4, contentHeight / 4);
-    doc.save("a4.pdf");
+    doc.addImage(canvas.toDataURL('image/jpeg', 1), 'JPEG', 0, 0, contentWidth / 4, contentHeight / 4)
+    doc.save('a4.pdf')
   })
 }

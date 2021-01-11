@@ -1,4 +1,5 @@
 import _import from '../../_import'
+import RD from '../../../doc/readme.md'
 export default [
   {
     path: '/directive',
@@ -15,7 +16,7 @@ export default [
       // },
       {
         path: '',
-        component: _import(`directive/copy`),
+        component: RD || _import(`directive/copy`),
         name: '复制',
       },
       {
