@@ -28,6 +28,11 @@ export default [
         path: 'dave',
         component: _import(`directive/save-as-img`),
         name: '保存图片',
+      },
+      {
+        path: 'full',
+        component: _import(`directive/full-screen`),
+        name: '全屏',
       }
     ]
   }
