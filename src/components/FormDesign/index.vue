@@ -5,9 +5,8 @@
     </el-aside>
     <el-container>
       <el-header height="50px">
-        <el-button-group class="fr mt-10">
-          <el-button type="text">预览</el-button>
-        </el-button-group>
+        <form-header @clear="clear" @viewJSON="$refs['view-json'].show()" />
+        <view-json ref="view-json" :form-data="formData" />
       </el-header>
       <el-main>
         <form-container :form-data="formData" :select.sync="select" />
@@ -17,13 +16,14 @@
       <attr-config :form-data="formData" :select="select" />
     </el-aside>
   </el-container>
-
 </template>
 
 <script>
 import ComponentList from './components/aside'
 import FormContainer from './components/form-container'
 import AttrConfig from './components/attr-config'
+import FormHeader from './components/header'
+import ViewJson from './components/viewJson'
 import { FORM_COMPONENTS } from './config/index'
 import './iconfont/iconfont.css'
 export default {
@@ -31,11 +31,14 @@ export default {
   components: {
     ComponentList,
     FormContainer,
-    AttrConfig
+    AttrConfig,
+    FormHeader,
+    ViewJson
   },
   props: {},
   data() {
     return {
+      showJson: false,
       formData: {
         list: [],
         config: {
@@ -59,6 +62,9 @@ export default {
   mounted() {
   },
   methods: {
+    clear() {
+      this.formData.list = []
+    }
   }
 }
 </script>

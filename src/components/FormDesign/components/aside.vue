@@ -67,4 +67,9 @@ export default {
     border-right: 1px solid #f1f1f1;
     height: 100%;
   }
+  ul{
+    margin: 0;
+    overflow: hidden;
+    padding-left: 0px;
+  }
 </style>

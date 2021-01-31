@@ -4,6 +4,7 @@
 ```html
 <template>
   <el-alert
+    :title="'dddd'"
     title="成功提示的文案"
     type="success"
     effect="dark">
