@@ -72,6 +72,9 @@ export default {
       },
       deep: true
     },
+    // code(val) {
+    //   this.editor.setValue(val)
+    // },
     modifiedCode(val) {
       this.editor.getModifiedEditor().setValue(val)
     },
